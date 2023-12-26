@@ -1,0 +1,18 @@
+
+{% extends 'blog/base_generic.html' %}
+
+{% block title %}Incluir Evento{% endblock %}
+
+{% block content %}
+  <h2>Incluir Evento</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    
+    <label for="{{ form.tipo_evento.id_for_label }}">Tipo de Evento:</label>
+    {{ form.tipo_evento }}
+
+    <button type="submit">Guardar</button>
+  </form>
+  <a href="{% url 'blog:index' %}">Volver a la página principal</a>
+{% endblock %}

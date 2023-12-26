@@ -1,0 +1,16 @@
+
+{% extends 'blog/base_generic.html' %}
+
+{% block title %}Página de Inicio{% endblock %}
+
+{% block header %}Bienvenido a la Página de Inicio de StreetHouse{% endblock %}
+
+{% block content %}
+  <p>Seleccione una Accion</p>
+  <ul>
+    <li><a href="{% url 'blog:incluir_marca' %}">Incluir Marca</a></li>
+    <li><a href="{% url 'blog:incluir_prenda' %}">Incluir Prenda</a></li>
+    <li><a href="{% url 'blog:incluir_evento' %}">Incluir Evento</a></li>
+    <li><a href="{% url 'blog:mostrar_resultados' %}">Buscar</a></li>
+  </ul>
+{% endblock %}

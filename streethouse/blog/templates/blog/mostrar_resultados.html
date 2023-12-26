@@ -1,0 +1,45 @@
+
+{% extends 'blog/base_generic.html' %}
+
+{% block title %}Resultados de búsqueda{% endblock %}
+
+{% block content %}
+  <h2>Resultados de búsqueda</h2>
+
+  <form method="post" action="{% url 'blog:mostrar_resultados' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Buscar</button>
+  </form>
+
+  {% if resultados.marcas %}
+    <h3>Marcas encontradas:</h3>
+    <ul>
+      {% for marca in resultados.marcas %}
+        <li>{{ marca.nombre }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {% if resultados.prendas %}
+    <h3>Prendas encontradas:</h3>
+    <ul>
+      {% for prenda in resultados.prendas %}
+        <li>{{ prenda.nombre }} (Marca: {{ prenda.marca.nombre }})</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {% if resultados.eventos %}
+    <h3>Eventos encontrados:</h3>
+    <ul>
+    {% for evento in resultados.eventos %}
+      <li>
+        {{ evento.nombre }} - {{ evento.descripcion }} - Fecha: {{ evento.fecha }}
+      </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  
+  <a href="{% url 'blog:index' %}">Volver a la página principal</a>
+{% endblock %}

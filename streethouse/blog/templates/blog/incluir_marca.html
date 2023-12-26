@@ -1,0 +1,15 @@
+
+{% extends 'blog/base_generic.html' %}
+
+{% block title %}Incluir Marca{% endblock %}
+
+{% block header %}Incluir Nueva Marca{% endblock %}
+
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+  </form>
+  <a href="{% url 'blog:index' %}">Volver a la Página de Inicio</a>
+{% endblock %}
